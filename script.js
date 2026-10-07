@@ -26,4 +26,31 @@ for (let i = 0; i < QTD_ALUNOS; i++) {
     }
     notas.push(linha);
 }   
-    console.log(notas);
+console.log(notas);
+
+let medias = [];
+let situacoes = [];
+
+for (let i = 0; i < QTD_ALUNOS; i++) {
+        let soma = 0;
+        for (let j = 0; j < QTD_ATIVIDADES; j++) {
+            soma = soma + notas[i][j];
+        }
+        let media = soma / QTD_ATIVIDADES;
+        medias.push(media);
+        
+        let situacao;
+        
+        if (media >= 7) {
+            situacao = "APROVADO";
+        } else if (media >= 5) {
+            situacao = "RECUPERAÇÃO";
+        } else {
+            situacao = "REPROVADO";
+        }
+        situacoes.push(situacao);
+    }
+    console.log(medias);
+    console.log(situacoes);
+
+    
