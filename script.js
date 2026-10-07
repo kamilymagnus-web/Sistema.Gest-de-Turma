@@ -40,7 +40,7 @@ for (let i = 0; i < QTD_ALUNOS; i++) {
         medias.push(media);
         
         let situacao;
-        
+
         if (media >= 7) {
             situacao = "APROVADO";
         } else if (media >= 5) {
@@ -53,4 +53,82 @@ for (let i = 0; i < QTD_ALUNOS; i++) {
     console.log(medias);
     console.log(situacoes);
 
+    console.log("======= RELATÓRIO DA TURMA =======");
     
+    for (let i = 0; i < QTD_ALUNOS; i++) {
+        let textoNotas = "";
+        for (let j = 0; j < QTD_ATIVIDADES; j++) {
+            textoNotas = textoNotas + notas[i][j];
+            if (j < QTD_ATIVIDADES - 1) {
+            textoNotas = textoNotas + " | ";
+            }
+        }
+        
+        console.log("Aluno: " + nomes[i]);
+        console.log("Notas: " + textoNotas);
+        console.log("Média: " + medias[i].toFixed(1) + " - " + situacoes[i]);
+        console.log("-".repeat(28));
+    }
+
+    let aprovados = 0;
+    let recuperacao = 0;
+    let reprovados = 0;
+    let somaMedias = 0;
+    
+    let maiorMedia = medias[0];
+    let menorMedia = medias[0];
+    
+    for (let i = 0; i < QTD_ALUNOS; i++) {
+        if (situacoes[i] === "APROVADO") {
+            aprovados++;
+            } else if (situacoes[i] === "RECUPERAÇÃO") {
+                recuperacao++;
+            } else {
+                reprovados++;
+            }
+            somaMedias = somaMedias + medias[i];
+            
+            if (medias[i] > maiorMedia) {
+                maiorMedia = medias[i];
+            }
+
+            if (medias[i] < menorMedia) {
+                menorMedia = medias[i];
+            }
+        }     
+        let mediaGeral = somaMedias / QTD_ALUNOS;
+
+        let indiceDestaque = 0;
+        
+        for (let i = 1; i < QTD_ALUNOS; i++) {
+            if (medias[i] > medias[indiceDestaque]) {
+                indiceDestaque = i;
+            }
+        }    
+        console.log("Destaque da turma:");
+        console.log(nomes[indiceDestaque]);
+        console.log("Média: " + medias[indiceDestaque].toFixed(1));
+
+        let mediasAtividades = [];
+
+        for (let j = 0; j < QTD_ATIVIDADES; j++) {   
+                let soma = 0;
+                for (let i = 0; i < QTD_ALUNOS; i++) {      
+                    soma = soma + notas[i][j];
+                }
+        
+                let mediaAtiv = soma / QTD_ALUNOS;
+                mediasAtividades.push(mediaAtiv);
+                console.log("Atividade " + (j + 1) + ": média " + mediaAtiv.toFixed(1));
+            }    
+            let indiceMelhorAtividade = 0;
+                
+            for (let j = 1; j < QTD_ATIVIDADES; j++) {
+                if (mediasAtividades[j] > mediasAtividades[indiceMelhorAtividade]) {
+                    indiceMelhorAtividade = j;
+                }
+            }   
+            console.log("Melhor desempenho: Atividade " + (indiceMelhorAtividade + 1));
+
+
+
