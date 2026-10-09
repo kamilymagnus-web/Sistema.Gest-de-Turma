@@ -1,15 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão de Turma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <h1>Sistema de Gestão de Turma</h1>
+            <p>Cadastro de alunos, notas e acompanhamento do desempenho da turma.</p>
+        </div>
+    </header>
+    <main class="container">
+        <!-- CADASTRO DOS ALUNOS -->
+        <section class="card" id="cadastro">
+            <h2>Cadastro de Alunos</h2>
+            <p class="descricao">Cadastre os cinco alunos que farão parte da turma.</p>
+            <div class="grupo-formulario">
+                <label for="nomeAluno"> Nome do aluno:</label>
+                <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno">
+                <button type="button" id="btnAdicionarAluno"> Adicionar aluno </button>
+            </div>
+            <div class="area-lista">
+                <h3>Alunos cadastrados</h3>
+                <ul id="listaAlunos"> <!-- Os alunos cadastrados serãoinseridos aqui pelo JavaScript. --> </ul>
+            </div>
+        </section>
+        <!-- CADASTRO DAS NOTAS -->
+        <section class="card" id="notas">
+            <h2>Registro de Notas</h2>
+            <p class="descricao">Informe as notas das quatro atividades de cada aluno.</p>
+            <div class="grupo-formulario">
+                <label for="alunoNota"> Aluno: </label>
+                <select id="alunoNota">
+                    <option value="">Selecione um aluno</option>
+                <!--As opções deverão ser criadas pelo JavaScript.-->
+                </select>
+            </div>
+            <div class="grade-notas">
+                <div class="campo-nota">
+                    <label for="nota1">Atividade 1</label>
+                    <input type="number" id="nota1" min="0" max="10" step="0.1">
+                </div>
+                <div class="campo-nota">
+                    <label for="nota2"> Atividade 2</label>
+                    <input type="number" id="nota2" min="0" max="10" step="0.1">
+                </div>
+                <div class="campo-nota">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistema de Gestão de Turma</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <main>
-            <h1>Sistema de Gestão de Turma</h1>  
-        </main>
-    </body>
+                    <label for="nota3"> Atividade 3 </label>
+                    <input type="number" id="nota3" min="0" max="10" step="0.1">
+                </div>
+                <div class="campo-nota">
+                    <label for="nota4"> Atividade 4 </label>
+                    <input type="number" id="nota4" min="0" max="10" step="0.1">
+                </div>
+            </div>
+            <button type="button" id="btnSalvarNotas" class="botao-principal"> Salvar notas </button>
+        </section>
+        <!-- RELATÓRIO -->
+        <section class="card" id="relatorio">
+            <div class="titulo-secao">
+                <div> 
+                    <h2>Relatório da Turma</h2>
+                    <p class="descricao">Consulte as notas, médias e situações dos alunos.</p>
+                </div>
+                <button type="button" id="btnGerarRelatorio"> Gerar relatório </button>
+            </div>
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Atividade 1</th>
+                            <th>Atividade 2</th>
+                            <th>Atividade 3</th>
+                            <th>Atividade 4</th>
+                            <th>Média</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela"> <!-- O relatório será criado pelo JavaScript.--> </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <section class="card" id="estatisticas">
+            <h2>Estatísticas da Turma</h2>
+            <div class="cards-estatisticas">
+
+                <article class="estatistica">
+                    <span>Aprovados</span>
+                    <strong id="totalAprovados"></strong>
+                </article>
+
+                <article class="estatistica">
+                    <span>Recuperação</span>
+                    <strong id="totalRecuperacao"> 0 </strong>
+                </article>
+
+                <article class="estatistica">
+                    <span>Reprovados</span>
+                    <strong id="totalReprovados"> 0 </strong>
+                </article>
+
+                <article class="estatistica">
+                    <span>Média Geral</span>
+                    <strong id="mediaGeral"> 0.0 </strong>
+                </article>
+
+                <article class="estatistica">
+                    <span>Maior Média</span>
+                    <strong id="maiorMedia"> 0.0 </strong>
+                </article>
+
+                <article class="estatistica">
+                    <span>Menor Média</span>
+                    <strong id="menorMedia"> 0.0 </strong>
+                </article>
+            </div>
+        </section>
+        <!-- DESTAQUE -->
+        <section class="card" id="destaque">
+            <h2>Destaque da Turma</h2>
+            <div class="destaque-aluno">
+                <p>Aluno com maior média:</p>
+                <strong id="nomeDestaque"> Nenhum aluno calculado </strong>
+                <span id="mediaDestaque"> Média: 0.0 </span>
+            </div>
+        </section>
+
+        <!-- DESEMPENHO POR ATIVIDADE -->
+        <section class="card" id="desempenho">
+            <h2>Desempenho por Atividade</h2>
+            <div class="cards-atividades">
+                <article class="atividade">
+                    <span>Atividade 1</span>
+                    <strong id="mediaAtividade1"> 0.0 </strong>
+                </article>
+
+                <article class="atividade">
+                    <span>Atividade 2</span>
+                    <strong id="mediaAtividade2"> 0.0 </strong>
+                </article>
+
+                <article class="atividade">
+                    <span>Atividade 3</span>
+                    <strong id="mediaAtividade3"> 0.0 </strong>
+                </article>
+
+                <article class="atividade">
+                    <span>Atividade 4</span>
+                    <strong id="mediaAtividade4"> 0.0 </strong>
+                </article>
+            </div>
+
+            <div class="melhor-atividade">
+                <p> Atividade com melhor desempenho: </p>
+                <strong id="melhorAtividade"> - </strong>
+
+            </div>
+        </section>
+
+        <!-- CONSULTA -->
+        <section class="card" id="consulta">
+            <h2>Consultar Aluno</h2>
+            <p class="descricao"> Digite o nome de um aluno cadastrado para consultar seus dados. </p>
+            <div class="grupo-formulario">
+                <input type="text" id="buscaAluno" placeholder="Digite o nome do aluno">
+                <button type="button" id="btnBuscarAluno"> Buscar </button>
+            </div>
+
+            <div
+                id="resultadoBusca"
+                class="resultado-busca"> <!-- Resultado da pesquisa. -->
+            </div>
+        </section>
+
+        <!-- MATRIZ -->
+        <section class="card" id="matriz">
+            <h2>Visualização da Matriz de Notas</h2>
+            <p class="descricao"> Cada linha representa um aluno e cada coluna representa uma atividade. </p>
+            <div id="visualizacaoMatriz" class="matriz-container">
+                <!-- A matriz deverá ser exibida pelo JavaScript.-->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p> UC6 - Desenvolver Algoritmos </p>
+    </footer>
+    <script src="script.js"></script>
+</body>
 </html>

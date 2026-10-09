@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+    line-height: 1.6;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* CABEÇALHO */
+.cabecalho {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 30px;
+}
+.cabecalho h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.cabecalho p {
+    color: #d1d5db;
+}
+/* CARDS */
+ 
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.card h2 {
+    margin-bottom: 6px;
+    color: #111827;
+}
+.descricao {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+/* FORMULÁRIOS */
+.grupo-formulario {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.grupo-formulario label {
+    width: 100%;
+    font-weight: bold;
+}
+input,
+select {
+    padding: 11px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+input:focus,
+select:focus {
+    border-color: #374151;
+    box-shadow: 0 0 0 2px rgba(55, 65, 81, 0.1);
+}
+input {
+    flex: 1;
+}
+select {
+    min-width: 220px;
+}
+/* BOTÕES */
+button {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #1f2937;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: 0.2s;
+}
+button:hover {
+    background-color: #374151;
+    transform: translateY(-1px);
+}
+.botao-principal {
+    margin-top: 15px;
+}
+/* NOTAS */
+.grade-notas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.campo-nota {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.campo-nota label {
+    font-weight: bold;
+}
+.campo-nota input {
+    width: 100%;
+}
+
+/* LISTA DE ALUNOS */
+.area-lista {
+    margin-top: 20px;
+}
+.area-lista h3 {
+    margin-bottom: 10px;
+}
+#listaAlunos {
+    list-style: none;
+}
+#listaAlunos li {
+    background-color: #f9fafb;
+    padding: 10px 12px;
+    border-left: 4px solid #1f2937;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+/* RELATÓRIO */
+.titulo-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.tabela-container {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
+th {
+    background-color: #1f2937;
+    color: white;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+tbody tr:hover {
+    background-color: #f3f4f6;
+}
+
+/* ESTATÍSTICAS */
+.cards-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.estatistica {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.estatistica span {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+.estatistica strong {
+    font-size: 1.8rem;
+    color: #111827;
+}
+
+/* DESTAQUE */
+.destaque-aluno {
+    background: linear-gradient(135deg, #111827, #374151);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+.destaque-aluno p {
+    color: #d1d5db;
+    margin-bottom: 6px;
+}
+.destaque-aluno strong {
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+.destaque-aluno span {
+    font-size: 1rem;
+    color: #e5e7eb;
+}
+
+/* DESEMPENHO POR ATIVIDADE */
+.cards-atividades {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.atividade {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.atividade span {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+.atividade strong {
+    font-size: 1.6rem;
+    color: #111827;
+}
+.melhor-atividade {
+    margin-top: 20px;
+    background-color: #f3f4f6;
+    padding: 18px;
+    border-radius: 8px;
+    border-left: 4px solid #1f2937;
+}
+.melhor-atividade strong {
+    font-size: 1.2rem;
+}
+
+/* CONSULTA */
+.resultado-busca {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    min-height: 60px;
+}
+
+/* MATRIZ */
+.matriz-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+.matriz-container table {
+    min-width: 600px;
+}
+.matriz-container th {
+    background-color: #111827;
+}
+
+/* MENSAGENS */
+.mensagem-sucesso {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.mensagem-erro {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* SITUAÇÕES */
+.aprovado {
+    color: #166534;
+    font-weight: bold;
+}
+.recuperacao {
+    color: #92400e;
+    font-weight: bold;
+}
+.reprovado {
+    color: #991b1b;
+    font-weight: bold;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: #111827;
+    color: #d1d5db;
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .cards-estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cards-atividades {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grade-notas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        width: 94%;
+    }
+    .cabecalho h1 {
+        font-size: 1.6rem;
+    }
+    .grupo-formulario {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .grupo-formulario input,
+    .grupo-formulario select,
+    .grupo-formulario button {
+        width: 100%;
+    }
+    .grade-notas {
+        grid-template-columns: 1fr;
+    }
+    .cards-estatisticas {
+        grid-template-columns: 1fr;
+    }
+    .cards-atividades {
+        grid-template-columns: 1fr;
+    }
+    .titulo-secao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .titulo-secao button {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+}
